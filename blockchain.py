@@ -16,6 +16,8 @@ class Blockchain:
         self.nodes = set()
         self.correction_time = time()
         self.target = "0000"
+        # requires additional work to avoid floating point 
+        self.coins_mined =0
 
         # Create the genesis block
         self.new_block(previous_hash='1', proof=100)
@@ -240,7 +242,8 @@ def mine():
     blockchain.new_transaction(
         sender="0",
         recipient=node_identifier,
-        amount=0.04,
+        amount=0.0004,
+        coinIds = [int(blockchain.coins_mined)]
     )
 
     # Forge the new Block by adding it to the chain
